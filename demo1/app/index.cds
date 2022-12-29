@@ -1,1 +1,0 @@
-using from './StudentsDetails/webapp/fiori-service';
