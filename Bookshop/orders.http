@@ -1,0 +1,8 @@
+GET http://localhost:4004/Stats/OrderInfor
+
+###
+
+POST http://localhost:4004/catalog/Orders
+Content-Type: application/json
+
+{"quantity": 10, "books_ID": 421}
