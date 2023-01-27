@@ -1,4 +1,4 @@
-GET http://localhost:4004/catalog/Authors?$expand=books
+POST http://localhost:4004/api-business-partner/reset
 
 ###. ?$expand=authors
 GET http://localhost:4004/catalog/Books
