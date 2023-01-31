@@ -2,7 +2,8 @@ namespace gb.nfe_ecomm;
 
 using { cuid, managed } from '@sap/cds/common';
 
-entity tab_1 : cuid, managed {
+@cds.persistence.exists
+entity nfedoc : cuid, managed {
     Key accessKey :String;
     externalOrderId : String(11);
     salesOrderId : String(5);
