@@ -1,7 +1,6 @@
 namespace sap.nfeecomm;
 
-using { cuid, managed } from '@sap/cds/common';
-
+//using { cuid, managed } from '@sap/cds/common';
 
 @cds.persistence.exists
 entity Notafiscal {

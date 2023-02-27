@@ -18,13 +18,13 @@ modules:
     parameters:
       buildpack: nodejs_buildpack
     requires:
-      - name: btp-sd-portaldevolucao-db
+      - name: btp-sd-NFEECOMMTESTE-db
 
 resources:
-  - name: btp-sd-portaldevolucao-db
+  - name: btp-sd-NFEECOMMTESTE-db
     type: com.sap.xs.hdi-container
     parameters:
       service: hana # or 'hanatrial' on trial landscapes
       service-plan: hdi-shared
       config:
-        schema: SD_PORTALDEVOLUCAO
+        schema: SD_NFEECOMMTESTE
