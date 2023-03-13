@@ -1,0 +1,31 @@
+{
+  "name": "kafka_node",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@kafkajs/confluent-schema-registry": "^3.3.0",
+    "@sap/cds": "^6",
+    "avsc": "^5.7.7",
+    "express": "^4",
+    "node-rdkafka": "^2.10.1"
+  },
+  "devDependencies": {
+    "sqlite3": "^5.0.4"
+  },
+  "scripts": {
+    "start": "cds run"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "kafka_node.db"
+        }
+      }
+    }
+  }
+}
