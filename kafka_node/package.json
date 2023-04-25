@@ -1,0 +1,39 @@
+{
+  "name": "kafka_node",
+  "version": "1.0.0",
+  "description": "Kafka & CAP ",
+  "repository": "N/A",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@kafkajs/confluent-schema-registry": "^3.3.0",
+    "@sap/cds": "^6",
+    "avsc": "^5.7.7",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4",
+    "kafkajs": "^2.2.4",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "sqlite3": "^5.0.4"
+  },
+  "scripts": {
+    "start": "cds run",
+    "watch": "cds watch"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "kafka_node.db"
+        }
+      }
+    },
+    "odata": {
+      "version": "v4",
+      "path": "api"
+    }
+  }
+}

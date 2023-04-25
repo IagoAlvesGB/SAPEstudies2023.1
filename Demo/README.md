@@ -8,6 +8,8 @@
 - [UI5 freestyle app in CAP](https://blogs.sap.com/2020/07/08/ui5-freestyle-app-in-cap/)
 
 
+
+
 ##### Comandos Uteis
 _
 | Comando | Oque Faz |
@@ -21,13 +23,16 @@ _
 | npm install -g yo @sapui5/generator-sapui5-templates | Instala Gerador UI5 |
 | yo @sapui5/sapui5-templates | Gera template UI5 |
 
+
+### Demo
+
+
+SAP® CAPM | SAP® Cloud Application Programming Model Tutorial | SAP® CAP Model End-to-End: [Video Tutorial](https://www.youtube.com/watch?v=mA5yYLI-byc)
+
 #### Como Executar:
-- Clone o Projeto
-- cd ./<project_name>
-- npm install
-- npm run deploy
+- npm run i
 - npm run start
 
-Ultima Atualizacao: 19/04/2023
+Ultima Atualizacao: 02/01/2023
 
 

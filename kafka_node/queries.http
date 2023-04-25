@@ -1,0 +1,52 @@
+GET http://localhost:4004/catalog/Authors?$expand=books
+
+###. ?$expand=authors
+GET http://localhost:4004/catalog/Books
+
+###
+GET http://localhost:4004/catalog/Authors
+
+###
+POST http://localhost:4004/catalog/Books
+Content-Type: application/json
+
+{"ID": 10, "title": "This Is My New Book"}
+###
+
+POST http://localhost:4004/catalog/producerkafka
+Content-Type: application/json
+
+{
+  "id": "Teste 2903 3",
+  "salesOrderId": "3083",
+  "outboundDeliveryId": "",
+  "deliveryBlock": "",
+  "soldToParty": "21",
+  "creationDate": "",
+  "items": [
+    {
+      "itemNumber": "10",
+      "material": "20000483",
+      "quantity": "8.0",
+      "quantityUnit": "PEC",
+      "productionPlant": ""
+    }
+  ]
+}
+
+
+### TESTING
+#PUT http://localhost:4004/catalog/Books
+#Content-Type: application/json
+#{"ID": 201, "authors_ID": 107}
+###
+
+
+###
+POST http://localhost:4004/catalog/Books
+Content-Type: application/json
+
+{"ID": 998, "title": "Java Rocks", "stock": 10, "authors_ID": 42}
+###
+
+GET http://localhost:4004/catalog/Orders?$expand=books

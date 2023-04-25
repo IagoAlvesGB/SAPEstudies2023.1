@@ -1,0 +1,29 @@
+POST http://localhost:4004/api-business-partner/reset
+
+###. ?$expand=authors
+GET http://localhost:4004/catalog/Books
+
+###
+GET http://localhost:4004/catalog/Authors
+
+###
+POST http://localhost:4004/catalog/Books
+Content-Type: application/json
+
+{"ID": 10, "title": "This Is My New Book"}
+
+### TESTING
+#PUT http://localhost:4004/catalog/Books
+#Content-Type: application/json
+#{"ID": 201, "authors_ID": 107}
+###
+
+
+###
+POST http://localhost:4004/catalog/Books
+Content-Type: application/json
+
+{"ID": 998, "title": "Java Rocks", "stock": 10, "authors_ID": 42}
+###
+
+GET http://localhost:4004/catalog/Orders?$expand=books

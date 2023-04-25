@@ -1,0 +1,37 @@
+###
+GET http://localhost:3000/producer/
+
+###
+POST http://localhost:3000/producer/newMessage HTTP/1.1
+Content-Type: application/json
+Authorization: Basic IagoAlves:123456
+
+{
+  "salesOrderId": "6660003179", 
+  "outboundDeliveryId": "0080002782",
+  "deliveryBlock": "",
+  "soldToParty": "2100000162",
+  "creationDate": "2023-04-12",
+  "items": [
+    {
+      "itemNumber": "000010",
+      "material": "000000000020000523",
+      "quantity": "1.000",
+      "quantityUnit": "PEC",
+      "productionPlant": "W011"
+    }
+  ]
+}
+
+### application/json
+
+###
+POST http://localhost:3000/user/authenticate
+Content-Type: application/json
+
+{
+  "username": "IagoAlves",
+  "password": "123456"
+}
+
+

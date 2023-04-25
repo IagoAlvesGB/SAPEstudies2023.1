@@ -1,0 +1,34 @@
+{
+    "SAP_NFEECOMM_NOTAFISCAL": {
+        "target": {
+            "schema": "S4HANA",
+            "object": "J_1BNFDOC"
+        }
+    },
+    "SAP_NFEECOMM_ITEMNOTAFISCAL": {
+        "target": {
+            "schema": "S4HANA",
+            "object": "J_1BNFLIN"
+        }
+    },
+    "SAP_NFEECOMM_TEXTO": {
+        "target": {
+            "schema": "S4HANA",
+            "object": "T001"
+        }
+    },
+    "SAP_NFEECOMM_MARA": {
+        "target": {
+            "schema": "S4HANA",
+            "object": "MARA"
+        }
+    },
+    "SAP_NFEECOMM_DOCFATITEM": {
+        "target": {
+            "schema": "S4HANA",
+            "object": "VBRP"
+        }
+    }
+    
+    
+}
