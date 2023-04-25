@@ -1,17 +1,14 @@
 require("dotenv").config();
 const { Kafka, logLevel} = require("kafkajs")
 const {
-  SchemaRegistry,
-  readAVSC,  
-  COMPATIBILITY: { FORWARD },
-  SchemaType,
+  SchemaRegistry
 } = require("@kafkajs/confluent-schema-registry");
 
 const clientId = process.env.CONSUMER_GROUP
 const subject = process.env.SUBJECT
 const version = process.env.SCHEMA_VERSION
 const brokers = () => { return process.env.BROKERS.split(',').sort(() => Math.random() - 0.5) }
-let id = 0;    
+let id = 0;  
 
 const registry = new SchemaRegistry({
   host: process.env.SCHEMA_REGISTRY_ENDPOINT,
@@ -30,8 +27,6 @@ const encode = async (body, id) => {
 const decode = async (encoded_key) => {
   return await registry.decode(encoded_key);
 };
-
-
 
 
 const schemaId = () => id
