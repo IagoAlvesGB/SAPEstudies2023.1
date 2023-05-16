@@ -1,0 +1,51 @@
+{
+  "name": "@sap/odata-server",
+  "version": "1.8.3",
+  "description": "OData V4.0 provisioning library",
+  "main": "index.js",
+  "license": "SEE LICENSE IN developer-license-3.1.txt",
+  "engines": {
+    "node": "10.x.x || 12.x.x"
+  },
+  "dependencies": {
+    "@sap/odata-commons": "=2.4.1",
+    "xmlbuilder": "=13.0.2"
+  },
+  "devDependencies": {
+    "@sap/odata-technical-services": "latest",
+    "eslint": "=7.1.0",
+    "jsdoc": "=3.6.4",
+    "mocha": "=7.2.0",
+    "supertest": "=4.0.2",
+    "nyc": "=15.0.1",
+    "mocha-simple-html-reporter": "=1.1.0",
+    "filter-node-package": "=2.2.0"
+  },
+  "scripts": {
+    "lint": "eslint --config eslint/eslintrc.json --rulesdir eslint --max-warnings 0 lib/ test/ test-servers/",
+    "doc": "npm run doc-api && npm run doc-html",
+    "doc-api": "jsdoc --configure .jsdoc.json --verbose",
+    "doc-html": "node ./documentation/createHtmlDoc.js documentation _gen/doc --copy-orig",
+    "test": "mocha --reporter min --recursive test/",
+    "cover": "nyc node node_modules/mocha/lib/cli/cli.js --reporter min --recursive test/",
+    "report": "mocha --recursive test/ --reporter mocha-simple-html-reporter --reporter-options output=_gen/report/report_all.html",
+    "prepareRelease": "clean-packages && ls && rm -rf node_modules && npm install --production --no-save --no-package-lock && cat npm-shrinkwrap.json"
+  },
+  "files": [
+    "package.json",
+    "npm-shrinkwrap.json",
+    "index.js",
+    "README.md",
+    "CHANGELOG.md",
+    "developer-license-3.1.txt",
+    "lib",
+    ".jsdoc.json"
+  ],
+  "keywords": [
+    "OData",
+    "OASIS",
+    "Protocol",
+    "Provisioning",
+    "Server"
+  ]
+}
