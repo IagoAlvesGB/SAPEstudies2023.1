@@ -15,6 +15,13 @@
                     additionalInformation: 'SAPUI5.Component=bookshop',  // <--
                     applicationType : 'URL',                             // <--
                     url: '/webapp'                                       // <--
+                },
+                'manage-books': {
+                    title: 'Manage Books',
+                    description: 'Book Management',
+                    additionalInformation: 'SAPUI5.Component=bookmanagement',
+                    applicationType: 'URL',
+                    url: '/bookmanagement'
                 }
             }
         };
@@ -27,8 +34,9 @@
     		data-sap-ui-libs="sap.m,sap.ushell,sap.fe.templates,sap.collaboration,sap.ui.layout"
     		data-sap-ui-compatVersion="edge"
     		data-sap-ui-theme="sap_fiori_3"
-    		data-sap-ui-resourceroots='{"bookshop": "../"}'
-        data-sap-ui-frameOptions="allow"></script>
+    		data-sap-ui-resourceroots='{"bookshop": "../", "bookmanagement": "../bookmanagement"}'
+        data-sap-ui-frameOptions="allow">
+    </script>
 
     <script>
         sap.ui.getCore().attachInit(
