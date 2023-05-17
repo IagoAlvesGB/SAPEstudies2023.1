@@ -13,6 +13,6 @@
     "sqlite3": "^5.1.6"
   },
   "scripts": {
-    "start": "cds run"
+    "start": "cds run --in-memory"
   }
 }
