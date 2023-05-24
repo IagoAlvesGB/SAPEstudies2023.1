@@ -1,0 +1,78 @@
+### POST POST POST POST POST POST POST POST POST POST POST POST POST POST 
+POST http://localhost:4004/index/Teacher HTTP/1.1
+Content-Type: application/json
+
+{
+"ID": "80de25a4-a9ec-48fc-8a98-e919a16be0e8",  
+"name": "Luciano Tavares",
+"birth": "1987-03-12",
+"rg": "123456789",
+"cpf": "987654321",
+"subject": [ { "ID": "be438a6b-5e2e-4f3f-aeb5-1e23e1e1c5df" } ]
+
+}
+
+### POST POST POST POST POST POST POST POST POST POST POST POST POST POST 
+POST http://localhost:4004/index/Teacher HTTP/1.1
+Content-Type: application/json
+
+{
+"ID": "6328d987-4c4a-4525-b83c-c3cf1c5cea7f",
+"name": "Lucas Oliveira",
+"birth": "1995-08-27",
+"rg": "987654321",
+"cpf": "123456789",
+"subject": [ { "ID": "8b8fdd8d-bd2a-4d4f-897a-b68d1a5fe7f9" } ]
+}
+
+### POST POST POST POST POST POST POST POST POST POST POST POST POST POST 
+POST http://localhost:4004/index/Teacher HTTP/1.1
+Content-Type: application/json
+
+{
+"ID": "9b637c59-8151-4a4f-af99-f4e4a7eafb50",
+"name": "Isabela Santos",
+"birth": "1992-11-05",
+"rg": "555555555",
+"cpf": "444444444",
+"subject": [ { "ID": "9f94a8b7-2f60-4d11-8cb5-75bc49f9eef0" } ]
+}
+
+### POST POST POST POST POST POST POST POST POST POST POST POST POST POST a3c58f98-3ab9-4f19-a8d2-6d2ac331d837
+POST http://localhost:4004/index/Teacher HTTP/1.1
+Content-Type: application/json
+
+{
+"ID": "3e28c6ee-ae30-4a4e-a2df-42315af86a14",
+"name": "Rafaela Costa",
+"birth": "1989-07-18",
+"rg": "222222222",
+"cpf": "333333333",
+"subject": [ { "ID": "6420cc20-4a6e-4b39-9369-9f6b4d76fb3b" } ]
+}
+
+### POST POST POST POST POST POST POST POST POST POST POST POST POST POST 
+POST http://localhost:4004/index/Teacher HTTP/1.1
+Content-Type: application/json
+
+{
+"ID": "e661e45b-ffde-4800-985b-401c6764df68",
+"name": "Gustavo Silva",
+"birth": "1998-02-03",
+"rg": "777777777",
+"cpf": "888888888",
+"subject": [ { "ID": "6bce876a-91e4-4db2-a515-27ed1f2f1df0" } ]
+}
+
+
+### GET GET GET GET GET GET GET GET GET GET GET GET GET GET GET GET GET GET 
+GET http://localhost:4004/index/Teacher?$expand=subject
+
+
+### DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE 
+DELETE  http://localhost:4004/index/Teacher/1edb4143-e093-416c-8493-0e965074878f HTTP/1.1
+Content-Type: application/json
+
+
+
+
