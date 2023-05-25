@@ -12,7 +12,7 @@
 _
 | Comando | Oque Faz |
 | ------ | ------ |
-| cds init <project_name> | Cria novo Projeto |
+| cds init ./<project_name> | Cria novo Projeto |
 | cds compile db/schema.cds -2 sql | Interpreta schema to sql |
 | cds watch | Executa projeto aguardando alteracoes |
 | cds run | Executa projeto |
@@ -30,4 +30,5 @@ _
 
 Ultima Atualizacao: 19/04/2023
 
+-----
 

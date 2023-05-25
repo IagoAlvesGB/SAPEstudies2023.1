@@ -1,7 +1,7 @@
 namespace school_crud.db;
 using { managed, cuid } from '@sap/cds/common';
 
-type Person : cuid, managed {
+type Person {
     name: String; 
     birth: Date; 
     rg: String(10);
@@ -10,14 +10,20 @@ type Person : cuid, managed {
 
 entity Subject : cuid, { 
     name: String;
-    teacher: Association to Teacher;
+    teacher: Association to many TeacherSubject on teacher.subject = $self;
 }
 
-entity Teacher : Person { 
-    subject: Association to many Subject on subject.teacher = $self;
+entity TeacherSubject @cds.ignore {
+    key subject: Association to Subject @odata.ignore;
+    key teacher: Association to Teacher @odata.ignore;
 }
 
-entity Student : Person { 
+entity Teacher : cuid, Person { 
+    subject: Association to many TeacherSubject on subject.teacher = $self;
+}
+
+entity Student : cuid, Person { 
     grade: Integer @title:'º Grade'; // Serie do Aluno
+
  }
 
