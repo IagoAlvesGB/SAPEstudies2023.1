@@ -1,0 +1,82 @@
+GET http://localhost:4004/index/Student HTTP/1.1
+
+###
+POST http://localhost:4004/index/Student HTTP/1.1
+Content-Type: application/json
+
+{
+"ID": "403636ff-837d-4454-9587-126b82f1534c",
+"grade": 1,    
+"name": "Ana Silva",
+"birth": "1990-05-12",
+"rg": "245632145",
+"cpf": "12345678901"
+}
+
+###
+POST http://localhost:4004/index/Student HTTP/1.1
+Content-Type: application/json
+
+{
+"ID": "58da5ee8-c329-4fee-82a0-1118ff18328c",
+"name": "Carlos Santos",
+"birth": "1985-09-28",
+"rg": "987654321",
+"cpf": "98765432109",
+"grade": 1
+}
+
+###
+
+POST http://localhost:4004/index/Student HTTP/1.1
+Content-Type: application/json
+
+{
+"ID": "b4501ccb-9c8f-40ca-b72c-a9228062036f",
+"name": "Maria Oliveira",
+"birth": "1992-03-10",
+"rg": "111222333",
+"cpf": "45678912301",
+"grade": 1
+}
+
+### 
+POST http://localhost:4004/index/Student HTTP/1.1
+Content-Type: application/json
+
+{
+"ID": "a53f2699-aa8f-426f-82c1-450da2da0d99",
+"name": "Pedro Souza",
+"birth": "1988-11-15",
+"rg": "444555666",
+"cpf": "78901234567",
+"grade": 1
+}
+
+### 
+POST http://localhost:4004/index/Student HTTP/1.1
+Content-Type: application/json
+
+{
+  "ID": "b5ee8064-ab82-44fb-97c2-75bc914eef7d",    
+"name": "Juliana Lima",
+"birth": "1995-07-03",
+"rg": "777888999",
+"cpf": "23456789012",
+"grade": 1
+}
+
+###
+POST http://localhost:4004/index/Student HTTP/1.1
+Content-Type: application/json
+
+{
+"ID": "7965a9fd-d6ba-43cd-9315-6d7d799510fd",    
+"name": "Lucas Fernandes",
+"birth": "1991-02-20",
+"rg": "123456789",
+"cpf": "89012345678",
+"grade": 1
+}
+
+###

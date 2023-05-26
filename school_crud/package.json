@@ -21,7 +21,7 @@
       "db": {
         "kind": "sqlite",
         "credentials": {
-          "database": "db/school_crud.sqlite"
+          "database": "db/my-db.sqlite"
         }
       }
     }

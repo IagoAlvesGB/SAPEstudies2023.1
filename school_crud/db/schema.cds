@@ -11,9 +11,10 @@ type Person {
 entity Subject : cuid, { 
     name: String;
     teacher: Association to many TeacherSubject on teacher.subject = $self;
+    student: Association to many Student on student.subject = $self;
 }
 
-entity TeacherSubject @cds.ignore {
+entity TeacherSubject {
     key subject: Association to Subject @odata.ignore;
     key teacher: Association to Teacher @odata.ignore;
 }
@@ -24,6 +25,6 @@ entity Teacher : cuid, Person {
 
 entity Student : cuid, Person { 
     grade: Integer @title:'º Grade'; // Serie do Aluno
-
+    subject: Association to Subject
  }
 
