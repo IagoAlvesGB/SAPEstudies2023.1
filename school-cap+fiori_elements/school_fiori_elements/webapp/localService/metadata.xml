@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="IndexService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="Teacher" EntityType="IndexService.Teacher"/>
+                <EntitySet Name="Subject" EntityType="IndexService.Subject"/>
+                <EntitySet Name="Student" EntityType="IndexService.Student"/>
+                <EntitySet Name="TeacherSubject" EntityType="IndexService.TeacherSubject"/>
+                <AssociationSet Name="Student_subject" Association="IndexService.Student_subject">
+                    <End Role="Student" EntitySet="Student"/>
+                    <End Role="Subject" EntitySet="Subject"/>
+                </AssociationSet>
+                <AssociationSet Name="TeacherSubject_subject" Association="IndexService.TeacherSubject_subject">
+                    <End Role="TeacherSubject" EntitySet="TeacherSubject"/>
+                    <End Role="Subject" EntitySet="Subject"/>
+                </AssociationSet>
+                <AssociationSet Name="TeacherSubject_teacher" Association="IndexService.TeacherSubject_teacher">
+                    <End Role="TeacherSubject" EntitySet="TeacherSubject"/>
+                    <End Role="Teacher" EntitySet="Teacher"/>
+                </AssociationSet>
+            </EntityContainer>
+            <EntityType Name="Teacher">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="name" Type="Edm.String"/>
+                <Property Name="birth" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="cpf" Type="Edm.String" MaxLength="11"/>
+                <Property Name="rg" Type="Edm.String" MaxLength="10"/>
+                <NavigationProperty Name="subject" Relationship="IndexService.TeacherSubject_teacher" FromRole="Teacher" ToRole="TeacherSubject"/>
+            </EntityType>
+            <EntityType Name="Subject">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="name" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="Student">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="name" Type="Edm.String"/>
+                <Property Name="identifier" Type="Edm.String"/>
+                <Property Name="birth" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="rg" Type="Edm.String" MaxLength="10"/>
+                <Property Name="cpf" Type="Edm.String" MaxLength="11"/>
+                <Property Name="grade" Type="Edm.Int32"/>
+                <NavigationProperty Name="subject" Relationship="IndexService.Student_subject" FromRole="Student" ToRole="Subject"/>
+                <Property Name="subject_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <EntityType Name="TeacherSubject">
+                <Key>
+                    <PropertyRef Name="subject_ID"/>
+                    <PropertyRef Name="teacher_ID"/>
+                </Key>
+                <NavigationProperty Name="subject" Relationship="IndexService.TeacherSubject_subject" FromRole="TeacherSubject" ToRole="Subject"/>
+                <Property Name="subject_ID" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="teacher" Relationship="IndexService.TeacherSubject_teacher" FromRole="TeacherSubject" ToRole="Teacher"/>
+                <Property Name="teacher_ID" Type="Edm.Guid" Nullable="false"/>
+            </EntityType>
+            <Association Name="Student_subject">
+                <End Role="Student" Type="IndexService.Student" Multiplicity="*"/>
+                <End Role="Subject" Type="IndexService.Subject" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="Subject">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="Student">
+                        <PropertyRef Name="subject_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="TeacherSubject_subject">
+                <End Role="TeacherSubject" Type="IndexService.TeacherSubject" Multiplicity="*"/>
+                <End Role="Subject" Type="IndexService.Subject" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="Subject">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="TeacherSubject">
+                        <PropertyRef Name="subject_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="TeacherSubject_teacher">
+                <End Role="TeacherSubject" Type="IndexService.TeacherSubject" Multiplicity="*"/>
+                <End Role="Teacher" Type="IndexService.Teacher" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="Teacher">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="TeacherSubject">
+                        <PropertyRef Name="teacher_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Annotations Target="IndexService.Student" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Student"/>
+                        <PropertyValue Property="TypeNamePlural" String="Students"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="name"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>identifier</PropertyPath>
+                        <PropertyPath>name</PropertyPath>
+                        <PropertyPath>rg</PropertyPath>
+                        <PropertyPath>cpf</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="identifier"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="rg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="cpf"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ProductDetail"/>
+                            <PropertyValue Property="Label" String="Details"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#SupplierDetail"/>
+                            <PropertyValue Property="Label" String="Supplier"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Price"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Student Information"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Description"/>
+                                        <PropertyValue Property="Label" String="Description"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Price">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="name"/>
+                        <PropertyValue Property="Title" String="Price"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Description">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="ProductDetail">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="identifier"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="IndexService.Student/identifier" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="ID"/>
+            </Annotations>
+            <Annotations Target="IndexService.Student/grade" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="º Grade"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

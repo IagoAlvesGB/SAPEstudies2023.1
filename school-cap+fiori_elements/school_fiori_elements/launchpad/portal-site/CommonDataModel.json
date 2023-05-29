@@ -1,0 +1,46 @@
+{
+	"_version": "3.0.0",
+	"identification": {
+	  "id": "c9aae627-9601-4a11-83c3-41b94a3c8026-1576776549699",
+	  "entityType": "bundle"
+	},
+	"payload": {
+	  "catalogs": [
+		{
+		  "_version": "3.0.0",
+		  "identification": {
+			"id": "defaultCatalogId",
+			"title": "{{catalogTitle}}",
+			"entityType": "catalog",
+			"i18n": "i18n/i18n.properties"
+		  },
+		  "payload": {
+			"viz": [
+			  {
+				"id": "demo.bookshopapp",
+				"vizId": "data-display"
+			  }
+			]
+		  }
+		}
+	  ],
+	  "groups": [{
+        "_version": "3.0.0",
+        "identification": {
+          "id": "defaultGroupId",
+          "title": "{{groupTitle}}",
+          "entityType": "group",
+          "i18n": "i18n/i18n.properties"
+        },
+        "payload": {
+          "viz": [
+            {
+              "id": "demo.bookshopapp-1",
+			  "appId": "demo.bookshopapp",
+			  "vizId": "data-display"
+            }
+          ]
+        }
+      }]
+  }
+}
