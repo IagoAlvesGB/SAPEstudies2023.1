@@ -14,6 +14,7 @@
   },
   "scripts": {
     "start": "cds run",
+    "watch": "cds watch",
     "deploy": "cds deploy"
   },
   "cds": {

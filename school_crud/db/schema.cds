@@ -3,6 +3,7 @@ using { managed, cuid } from '@sap/cds/common';
 
 type Person {
     name: String; 
+    identifier      : String @Common.Label : 'ID';
     birth: Date; 
     rg: String(10);
     cpf:String(11);
