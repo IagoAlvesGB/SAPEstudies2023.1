@@ -6,6 +6,10 @@
 - [Create a CAP Business Service with Node.js Using Visual Studio Code](https://developers.sap.com/tutorials/cp-apm-nodejs-create-service.html)
 - [Solve Error in MAC OS](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)
 - [UI5 freestyle app in CAP](https://blogs.sap.com/2020/07/08/ui5-freestyle-app-in-cap/)
+- [Developing a fiori elements app whit cap and fiori tools](https://blogs.sap.com/2020/09/06/developing-a-fiori-elements-app-with-cap-and-fiori-tools/)
+
+
+
 
 
 ##### Comandos Uteis
@@ -28,7 +32,7 @@ _
 - npm run deploy
 - npm run start
 
-Ultima Atualizacao: 19/04/2023
+Ultima Atualizacao: 29/05/2023
 
 -----
 
