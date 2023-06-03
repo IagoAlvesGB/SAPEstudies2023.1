@@ -17,7 +17,7 @@
 		  "payload": {
 			"viz": [
 			  {
-				"id": "demo.bookshopapp",
+				"id": "demo.schoolapp",
 				"vizId": "data-display"
 			  }
 			]
@@ -35,8 +35,8 @@
         "payload": {
           "viz": [
             {
-              "id": "demo.bookshopapp-1",
-			  "appId": "demo.bookshopapp",
+              "id": "demo.schoolapp-1",
+			  "appId": "demo.schoolapp",
 			  "vizId": "data-display"
             }
           ]

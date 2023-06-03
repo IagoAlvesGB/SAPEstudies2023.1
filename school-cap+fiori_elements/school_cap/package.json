@@ -11,12 +11,14 @@
     "express": "^4"
   },
   "devDependencies": {
+    "@sap/ux-specification": "^1.108.6",
     "sqlite3": "^5.0.4"
   },
   "scripts": {
     "start": "cds run",
     "watch": "cds watch",
-    "deploy": "cds deploy"
+    "deploy": "cds deploy",
+    "watch-schoolproject": "cds watch --open schoolproject/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "requires": {
@@ -27,5 +29,8 @@
         }
       }
     }
-  }
+  },
+  "sapux": [
+    "app/schoolproject"
+  ]
 }

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="IndexService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Teacher" EntityType="IndexService.Teacher">
+                    <NavigationPropertyBinding Path="subject" Target="TeacherSubject"/>
+                </EntitySet>
+                <EntitySet Name="Subject" EntityType="IndexService.Subject"/>
+                <EntitySet Name="Student" EntityType="IndexService.Student">
+                    <NavigationPropertyBinding Path="subject" Target="Subject"/>
+                </EntitySet>
+                <EntitySet Name="TeacherSubject" EntityType="IndexService.TeacherSubject">
+                    <NavigationPropertyBinding Path="subject" Target="Subject"/>
+                    <NavigationPropertyBinding Path="teacher" Target="Teacher"/>
+                </EntitySet>
+            </EntityContainer>
+            <EntityType Name="Teacher">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="name" Type="Edm.String"/>
+                <Property Name="birth" Type="Edm.Date"/>
+                <Property Name="cpf" Type="Edm.String" MaxLength="11"/>
+                <Property Name="rg" Type="Edm.String" MaxLength="10"/>
+                <NavigationProperty Name="subject" Type="Collection(IndexService.TeacherSubject)" Partner="teacher"/>
+            </EntityType>
+            <EntityType Name="Subject">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="name" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="Student">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="name" Type="Edm.String"/>
+                <Property Name="identifier" Type="Edm.String"/>
+                <Property Name="birth" Type="Edm.Date"/>
+                <Property Name="rg" Type="Edm.String" MaxLength="10"/>
+                <Property Name="cpf" Type="Edm.String" MaxLength="11"/>
+                <Property Name="grade" Type="Edm.Int32"/>
+                <NavigationProperty Name="subject" Type="IndexService.Subject">
+                    <ReferentialConstraint Property="subject_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="subject_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <EntityType Name="TeacherSubject">
+                <Key>
+                    <PropertyRef Name="subject_ID"/>
+                    <PropertyRef Name="teacher_ID"/>
+                </Key>
+                <NavigationProperty Name="subject" Type="IndexService.Subject">
+                    <ReferentialConstraint Property="subject_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="subject_ID" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="teacher" Type="IndexService.Teacher" Partner="subject">
+                    <ReferentialConstraint Property="teacher_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="teacher_ID" Type="Edm.Guid" Nullable="false"/>
+            </EntityType>
+            <Annotations Target="IndexService.Student/identifier">
+                <Annotation Term="Common.Label" String="ID"/>
+            </Annotations>
+            <Annotations Target="IndexService.Student/grade">
+                <Annotation Term="Common.Label" String="º Grade"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
