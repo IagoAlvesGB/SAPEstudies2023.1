@@ -32,7 +32,5 @@
 - npm run deploy
 - npm run start
 
-Ultima Atualizacao: 29/05/2023
-
 -----
 
