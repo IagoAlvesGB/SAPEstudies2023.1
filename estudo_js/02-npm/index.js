@@ -1,5 +1,6 @@
 // Trabalhando com Callbacks
 
+const { mainModule } = require('process');
 const util = require('util')
 const obterEnderecoAsync = util.promisify(obterEndereco)
 
@@ -41,9 +42,33 @@ function obterEndereco(idUsuario, callback) {
     }, 3000);
     
 }
+main()
+async function main(){
+    try {
+        console.time('medida-promise')
+        const usuario = await obterUsuario()
+        const resultado = await Promise.all([
+            obtertelefone(usuario.id),
+            obterEnderecoAsync(usuario.id)
+        ])
+        const endereco = resultado[1]
+        const telefone = resultado[0]
 
+        console.log(`
+            Nome: ${usuario.nome},
+            Telefone: (${telefone.ddd}) ${telefone.telefone},
+            Endereco: ${endereco.rua}, ${endereco.numero}        
+        `)
+        console.timeEnd('medida-promise')
+
+    } catch (error) {
+        
+    }
+}
+
+// Padrao Promise
+/*
 const usuarioPromise = obterUsuario()
-
 usuarioPromise
     .then(function (usuario){
         return obterTelefone(usuario.id)
@@ -74,7 +99,7 @@ usuarioPromise
     .catch(function (error){
         console.log('DEU RUIM', error)
     })
-
+*/
 
 
 
