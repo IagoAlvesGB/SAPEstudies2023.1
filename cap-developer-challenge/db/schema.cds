@@ -12,11 +12,11 @@ entity Rounds : cuid {
 entity Holes : cuid {
   score : Integer;
   rounds: Association to Rounds;
+  holesPar: holePar;
   shots : Association to many Shots on shots.holes = $self;
 }
 
 entity Shots : cuid {
   score : Integer;
-  holesPar: holePar;
   holes : Association to Holes;
 }
