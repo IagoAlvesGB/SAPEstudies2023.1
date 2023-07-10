@@ -1,0 +1,36 @@
+_schema-version: '3.1'
+ID: cap-developer-challenge
+version: 0.0.1
+description: "cap-developer-challenge"
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npx -p @sap/cds-dk cds build --production
+modules:
+  - name: cap-developer-challenge-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm-ci
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: cap-developer-challenge-auth
+
+resources:
+  - name: cap-developer-challenge-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: cap-developer-challenge-${org}-${space}
+        tenant-mode: dedicated
