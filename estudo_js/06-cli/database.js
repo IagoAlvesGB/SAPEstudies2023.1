@@ -1,6 +1,7 @@
-const { readFile } = require('fs')
+const { readFile, writeFile } = require('fs')
 const { promisify } = require('util')
 const readFileAsync = promisify(readFile)
+const writeFileAsync = promisify(writeFile)
 
 
 class Database{
@@ -13,9 +14,17 @@ class Database{
         return JSON.parse(arquivo.toString())
 
     }
-    escreverArquivo(){
+    async escreverArquivo(dados){
+        await writeFileAsync(this.NOME_ARQUIVO, JSON.stringify(dados)) 
+        return true
+    }
+
+    async cadastrar(heroi){
+        const dados = await this.obterDadosArquivo()
+        const id = heroi
 
     }
+
     async listar(id){
         const dados = await this.obterDadosArquivo()
             const dadosFiltrados = dados.filter(item => (id ? item.id ===id : true ))
