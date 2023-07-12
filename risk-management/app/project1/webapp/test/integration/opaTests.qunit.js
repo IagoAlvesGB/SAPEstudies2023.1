@@ -1,15 +1,15 @@
 sap.ui.require(
     [
         'sap/fe/test/JourneyRunner',
-        'risks/test/integration/FirstJourney',
-		'risks/test/integration/pages/RisksList',
-		'risks/test/integration/pages/RisksObjectPage'
+        'project1/test/integration/FirstJourney',
+		'project1/test/integration/pages/RisksList',
+		'project1/test/integration/pages/RisksObjectPage'
     ],
     function(JourneyRunner, opaJourney, RisksList, RisksObjectPage) {
         'use strict';
         var JourneyRunner = new JourneyRunner({
             // start index.html in web folder
-            launchUrl: sap.ui.require.toUrl('risks') + '/index.html'
+            launchUrl: sap.ui.require.toUrl('project1') + '/index.html'
         });
 
        
