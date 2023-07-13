@@ -3,14 +3,16 @@
   "version": "0.0.1",
   "scripts": {
     "start": "cds run",
-    "dev": "cds watch"
+    "dev": "cds watch",
+    "deploy-db": "cds deploy --to sqlite:db/my-db.sqlite" 
   },
   "dependencies": {
     "@sap/cds": "^7",
     "@sap/cds-dk": "^7",
+    "@sap/xssec": "^3",
     "express": "^4.17.1",
     "passport": "^0",
-    "@sap/xssec": "^3"
+    "sqlite3": "^5.1.6"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1.0.0"
@@ -19,6 +21,12 @@
     "requires": {
       "[production]": {
         "auth": "xsuaa"
+      },
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "db/my-db.sqlite"
+        }
       }
     }
   }
